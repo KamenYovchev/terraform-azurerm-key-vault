@@ -3,13 +3,17 @@
 #data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "key_vault" {
-  name                        = var.name
-  location                    = var.location
-  resource_group_name         = var.resource_group_name
-  enabled_for_disk_encryption = true
-  tenant_id                   = var.tenant_id
-  soft_delete_retention_days  = 7
-  purge_protection_enabled    = false
+  name                            = var.name
+  location                        = var.location
+  resource_group_name             = var.resource_group_name
+  tenant_id                       = var.tenant_id
+  enabled_for_deployment          = var.enabled_for_deployment
+  enabled_for_disk_encryption     = var.enabled_for_disk_encryption
+  enabled_for_template_deployment = var.enabled_for_template_deployment
+  soft_delete_enabled             = var.soft_delete_enabled
+  soft_delete_retention_days      = var.soft_delete_retention_days
+  purge_protection_enabled        = var.purge_protection_enabled
+  soft_delete_retention_days      = 7
 
   sku_name = "standard"
 
@@ -17,41 +21,11 @@ resource "azurerm_key_vault" "key_vault" {
     tenant_id = var.tenant_id #data.azurerm_client_config.current.tenant_id
     object_id = var.object_id #data.azurerm_client_config.current.object_id
 
-    key_permissions = [
-      "get",
-      "list",
-      "update",
-      "create",
-      "import",
-      "delete",
-      "recover",
-      "backup",
-      "restore",
-    ]
+    key_permissions         = var.kv_key_permissions_full
+    secret_permissions      = var.kv_secret_permissions_full
+    storage_permissions     = var.kv_storage_permissions_full
+    certificate_permissions = var.kv_certificate_permissions_full
 
-    secret_permissions = [
-      "get",
-      "list",
-      "update",
-      "create",
-      "import",
-      "delete",
-      "recover",
-      "backup",
-      "restore",
-    ]
-
-    storage_permissions = [
-      "get",
-      "list",
-      "update",
-      "create",
-      "import",
-      "delete",
-      "recover",
-      "backup",
-      "restore",
-    ]
   }
 }
 

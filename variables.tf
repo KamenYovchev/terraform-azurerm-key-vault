@@ -24,6 +24,8 @@ variable "soft_delete_retention_days" {}
 
 variable "purge_protection_enabled" {}
 
+variable "enable_rbac_authorization" {}
+
 variable "sku_name" {}
 
 variable "kv_key_permissions_full" {

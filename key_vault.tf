@@ -18,15 +18,39 @@ resource "azurerm_key_vault" "key_vault" {
     object_id = var.object_id #data.azurerm_client_config.current.object_id
 
     key_permissions = [
-      "get", "list", "update", "create", "import", "delete", "recover", "backup", "restore",
+      "get",
+      "list",
+      "update",
+      "create",
+      "import",
+      "delete",
+      "recover",
+      "backup",
+      "restore",
     ]
 
     secret_permissions = [
-      "get", "list", "update", "create", "import", "delete", "recover", "backup", "restore",
+      "get",
+      "list",
+      "update",
+      "create",
+      "import",
+      "delete",
+      "recover",
+      "backup",
+      "restore",
     ]
 
     storage_permissions = [
-      "get", "list", "update", "create", "import", "delete", "recover", "backup", "restore",
+      "get",
+      "list",
+      "update",
+      "create",
+      "import",
+      "delete",
+      "recover",
+      "backup",
+      "restore",
     ]
   }
 }

@@ -24,6 +24,8 @@ variable "soft_delete_retention_days" {}
 
 variable "purge_protection_enabled" {}
 
+variable "sku_name" {}
+
 variable "kv_key_permissions_full" {
   type        = list(string)
   description = "List of full key permissions, must be one or more from the following: backup, create, decrypt, delete, encrypt, get, import, list, purge, recover, restore, sign, unwrapKey, update, verify and wrapKey."
